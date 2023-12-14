@@ -11,7 +11,7 @@ class PropiedadController {
     public static function index(Router $router) {
 
         $propiedades = Propiedad::all();
-        // Mensaje condicional
+       // Mensaje condicional
         $resultado = $_GET['resultado'] ?? null;
         
         $router->render('propiedades/admin', [
