@@ -70,7 +70,8 @@ class PropiedadController {
     }
 
     public static function actualizar() {
-        echo "actualizar propiedad";
+       
+        $id = validarORedireccionar('/admin');
     }
 }
 
