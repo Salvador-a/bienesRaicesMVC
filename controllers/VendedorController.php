@@ -61,21 +61,33 @@ class VendedorController {
         
             if (empty($errores)) {
                 $vendedor->guardar();
-            }
-        
-            
-        
+            }      
         }
 
         $router->render('vendedores/actualizar', [
             'errores' => $errores,
             'vendedor' => $vendedor
-
         ]);
-        
     }
 
-    public static function creliminarear() {
-        echo "Eliminar Vendedor";
+    public static function eliminar( ) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+            
+
+           // validar el id
+           $id = $_POST['id'];
+           $id = filter_var($id, FILTER_VALIDATE_INT);
+
+           if ($id) {
+            // Valida el tipo de a eliminar
+            $tipo = $_POST['tipo'];
+            
+            if(validarTipoContenido($tipo)) {
+                $vendedor = Vendedor::find($id);
+                $vendedor->eliminar();
+            }
+           }
+        }
     }
 }
