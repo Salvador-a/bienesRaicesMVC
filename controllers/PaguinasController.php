@@ -56,11 +56,17 @@ class PaguinasController {
     }
     public static function entrada( Router $router ) {
         $router->render('paguinas/entrada', [
-            
+
         ]);
     }
-    public static function contacto( ) {
-        echo "Desde contacto";
+    public static function contacto( Router $router ) {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            debuguear($_POST);
+        }
+        $router ->render('paguinas/contacto',[
+
+        ]);
     }
    
 }
