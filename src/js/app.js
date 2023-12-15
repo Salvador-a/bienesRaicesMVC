@@ -41,6 +41,15 @@ function darkMode() {
 function eventListener() {
     const mobileMenu = document.querySelector('.mobile-menu');
     mobileMenu.addEventListener('click', navegacionResponsive);
+
+    // Muestra campos de condicionales
+    const metodoContacto = document.querySelectorAll('input[name="contacto[contacto]"]');
+    metodoContacto.forEach(input => input.addEventListener('click',mostrarMetodosContacto))
+    
+    
+
+    
+
 }
 
 // Función para mostrar/ocultar la navegación en dispositivos móviles
@@ -68,4 +77,32 @@ function borraMensaje() {
     }
 }
 
-// Otras funciones (eventListeners y temporaryClass) deberían definirse en tu código para evitar errores.
+function mostrarMetodosContacto(e) {
+    const contactoDiv = document.querySelector('#contacto');
+    contactoDiv.textContent = 'Diste Click';
+
+    if (e.target.value === 'telefono') {
+        contactoDiv.innerHTML = `
+        <label for="telefono">Numero Teléfono:</label>
+        <input type="tel" placeholder="Tu Teléfono" id="telefono" name="contacto[telefono]" >
+
+        <p>Elija la fécha y la hora para la llamada</p>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="contacto[fecha]" name="contacto[fecha]">
+
+            <label for="hora">Hora:</label>
+            <input type="time" id="hora" min="09:00" max="18:00" name="contacto[hora]">
+        `;
+    } else {
+        contactoDiv.innerHTML = `
+        <label for="email">E-mail:</label>
+        <input type="email" placeholder="Tu Email" id="email" name="contacto[email]" >
+        
+        `;
+
+        
+    }
+
+
+}
+
