@@ -40,8 +40,17 @@ class Admin extends ActiveRecord {
             self::$errores[] = 'El Usurio no exite';
             return;
         }
-        return $resultado;
+        return $resultado;   
+    }
 
-    
+    public function comprobarPassword($resultado) {
+        $usuario = $resultado->fetch_object();
+
+       $autenticado = password_verify($this->password, $usuario->password);
+
+       if (!$autenticado) {
+            self::$errores[] = 'El Password es Incorrecto';
+        }
+        return $autenticado;
     }
 }
