@@ -2,7 +2,7 @@
     <?php foreach ($propiedades as $propiedad) : ?>
     <div class="anuncio">
         
-            <img loading="lazy" src="/bienesraices/imagenes/<?php echo $propiedad->imagen; ?>" alt="anuncio">
+            <img loading="lazy" src="/imagenes/<?php echo $propiedad->imagen; ?>" alt="anuncio">
         
 
         <div class="contenido-anuncio">
