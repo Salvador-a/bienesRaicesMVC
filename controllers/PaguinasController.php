@@ -51,11 +51,13 @@ class PaguinasController {
 
         ]);
     }
-    public static function blog( ) {
-        echo "Desde blog";
+    public static function blog( Router $router ) {
+        $router->render('paguinas/blog');
     }
-    public static function entrada( ) {
-        echo "Desde entrada";
+    public static function entrada( Router $router ) {
+        $router->render('paguinas/entrada', [
+            
+        ]);
     }
     public static function contacto( ) {
         echo "Desde contacto";
