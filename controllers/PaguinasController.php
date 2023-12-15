@@ -17,15 +17,26 @@ class PaguinasController {
 
         ]);
     }
+
     public static function nosotros( Router $router ) {
         
-        
+
         $router->render('paguinas/nosotros',[
+            
 
         ]);
     }
-    public static function propiedades( ) {
-        echo "Desde propiedades";
+
+    public static function propiedades( Router $router ) {
+
+        $propiedades = Propiedad::all();
+
+        $router->render('paguinas/propiedades', [
+
+            'propiedades' => $propiedades
+
+
+        ]);
     }
 
     public static function propiedad( ) {
