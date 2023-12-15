@@ -17,8 +17,12 @@ class PaguinasController {
 
         ]);
     }
-    public static function nosotros( ) {
-        echo "Desde nostros";
+    public static function nosotros( Router $router ) {
+        
+        
+        $router->render('paguinas/nosotros',[
+
+        ]);
     }
     public static function propiedades( ) {
         echo "Desde propiedades";
