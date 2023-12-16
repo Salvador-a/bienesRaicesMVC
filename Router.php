@@ -18,15 +18,32 @@ namespace MVC;
 
 
     public function comprobarRutas()  {
+
+        session_start();
+
+        $auth = $_SESSION[ 'login'] ?? null;
+
+
+        // Arreglo de rutas proptegidas..
+        $rutas_protegidas = ['/admin', '/propiedades/crear', '/propiedades/actualizar', '/propiedades/eliminar', '/vendedores/crear', 'vendedores/actualizar', '/vendedores/eliminar'];
+
+        
+
        $urlActual = $_SERVER['PATH_INFO'] ?? '/';
        $metodo = $_SERVER['REQUEST_METHOD'] ;
 
+       
+
        if ($metodo === 'GET') {
-            $fn= $this->rutasGET[$urlActual] ?? null;
-           
+            $fn= $this->rutasGET[$urlActual] ?? null;           
        }else {
-            
             $fn= $this->rutasPOST[$urlActual] ?? null;
+       }
+
+       // Protege  las rutas
+       if (in_array($urlActual, $rutas_protegidas) && !$auth) {
+            header('Location: /');
+        
        }
 
        if ($fn) {
